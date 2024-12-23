@@ -1,0 +1,20 @@
+/* LogoutButton.css */
+.logout-button {
+    position: absolute;
+    bottom: 10%;
+    font-family: Raleway;
+    font-weight: 600;
+    padding: 10px 20px;
+    background-color: #6c5ce7; 
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #483bab; /* Темно-оранжевый при наведении */
+  }
+  

@@ -1,0 +1,36 @@
+/* Контейнер для всего header */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Распределяет элементы по обеим сторонам */
+    align-items: center; /* Выравнивает элементы по вертикали */
+    padding: 20px;
+    height: 100px;
+    box-sizing: border-box;
+  }
+  
+  /* Контейнер для текста */
+  .text-container {
+    flex-grow: 1; /* Занимает оставшееся пространство, чтобы текст был по центру */
+    text-align: center;
+  }
+  
+  /* Контейнер для картинки */
+  .image-container {
+    position: relative;
+    text-align: center;
+  }
+  
+  /* Стили для картинки */
+  .logo {
+    width: 50px;
+    height: 50px;
+    filter: invert(1) brightness(100%);
+  }
+  
+  /* Контейнер для кнопки */
+  .button-container {
+    position: absolute;
+    bottom: -40px; /* Расстояние от картинки до кнопки */
+    right: 0;
+  }
+  

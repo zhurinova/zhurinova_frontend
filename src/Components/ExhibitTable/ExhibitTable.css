@@ -1,0 +1,41 @@
+.table {
+    width: 80%; /* Занимает 80% ширины экрана */
+    margin: 20px auto; /* Центрирует таблицу по горизонтали */
+    border-collapse: collapse; /* Убирает промежутки между ячейками */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляет тень */
+    border-radius: 25px;
+  }
+  
+  .table th,
+  .table td {
+    /* border: 1px solid #ddd;  */
+    padding: 12px; /* Отступ внутри ячеек */
+    text-align: center; /* Выравнивание текста */
+  }
+  
+  .table th {
+    background: linear-gradient(#5f47fbdf, #edbaff00);
+    color: white; /* Белый текст в заголовках */
+    cursor: pointer; /* Указатель при наведении */
+    text-transform: uppercase; /* Верхний регистр текста */
+    font-weight: bold;
+  }
+  
+  .table th:hover {
+    background-color: #9176dd; 
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Светлый фон для четных строк */
+  }
+  
+  .table tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* Белый фон для нечетных строк */
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1; /* Светлый серый при наведении */
+    transition: background-color 0.3s; /* Анимация изменения цвета */
+  }
+
+  

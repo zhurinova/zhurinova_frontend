@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #1d162c;
+  }
+  
+  .login-container {
+    display: flex;
+    background: url('https://d2pas86kykpvmq.cloudfront.net/landings/glossy/shape-6.png') no-repeat center; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Занимает всю высоту экрана */
+    text-align: center;
+  }
+  
+  .login-form {
+    background: linear-gradient(#5f47fbdf, #edbaff00); /* Белый фон для формы */
+    padding: 10px;
+    border-radius: 35px; /* Скругленные углы */
+    width: 300px; /* Фиксированная ширина */
+  }
+  
+  .login-form h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  .login-form div {
+    margin-bottom: 15px;
+    text-align: left; /* Выравнивание текста для меток */
+  }
+  
+  .login-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-size: 14px;
+  }
+  
+  .login-form input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+    font-size: 14px;
+  }
+  
+  .login-form button {
+    background-color: #ff42f9;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 30%;
+  }
+  
+  .login-form button:hover {
+    background-color: #af72ff; /* Темнее при наведении */
+  }
+  
+  .login-form p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .login-form p.error {
+    color: rgb(255, 103, 103);
+  }
+  
+  .login-form p.success {
+    color: rgb(119, 255, 119);
+  }
+  

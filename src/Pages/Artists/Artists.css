@@ -1,0 +1,55 @@
+/* src/Pages/Artists/Artists.css */
+.artists-container {
+  background: url('https://d2pas86kykpvmq.cloudfront.net/landings/glossy/shape-5.png') left no-repeat; 
+  padding: 20px;
+}
+
+.checkbox-container {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .custom-checkbox input {
+    display: none;
+  }
+  
+  .custom-checkbox .checkmark {
+    width: 20px;
+    height: 20px;
+    /* background: linear-gradient(#f7f6ffdf, #edbaff00); */
+    border: 1px solid #fff;
+    border-radius: 50%;
+    /* border: none; */
+    margin-right: 10px;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .custom-checkbox .checkmark::before {
+    content: '';
+    color: #fff;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .custom-checkbox input:checked + .checkmark {
+    background: linear-gradient(#6e6eebdf, #2c1dffad);
+  }
+  
+
+  

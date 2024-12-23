@@ -1,0 +1,54 @@
+/* Стили для карточки */
+.card {
+    width: 300px; /* Размер карточки */
+    background-color: white; /* Белый фон */
+    border-radius: 10px; /* Скругление углов */
+    overflow: hidden; /* Обрезаем все, что выходит за пределы карточки */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень вокруг карточки */
+    margin: 20px; /* Отступы между карточками */
+    transition: transform 0.3s ease-in-out; /* Плавное увеличение при наведении */
+  }
+  
+  .card:hover {
+    transform: translateY(-10px); /* Эффект поднятия карточки при наведении */
+  }
+  
+  /* Стили для изображения карточки */
+  .card-image {
+    width: 100%; /* Картинка растягивается по всей ширине карточки */
+    height: 200px; /* Высота картинки */
+    object-fit: cover; /* Картинка не деформируется, но обрезается при необходимости */
+    border-top-left-radius: 10px; /* Скругление верхнего левого угла изображения */
+    border-top-right-radius: 10px; /* Скругление верхнего правого угла изображения */
+  }
+  
+  /* Контент внутри карточки */
+  .card-content {
+    padding: 16px; /* Отступы внутри карточки */
+  }
+  
+  /* Стили заголовка */
+  .card-content h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px; /* Отступ снизу */
+  }
+  
+  /* Стили для текста */
+  .card-content p {
+    font-size: 0.9rem;
+    margin: 4px 0; /* Отступы между строками */
+    color: #555; /* Серый цвет текста */
+  }
+  
+  /* Для стоимости */
+  .card-content p strong {
+    font-weight: bold;
+  }
+  
+  /* Стили для даты */
+  .card-content p:last-child {
+    font-style: italic;
+    color: #777;
+  }
+  

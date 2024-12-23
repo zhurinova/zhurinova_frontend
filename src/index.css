@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&family=Montseratt&display=swap");
+
+/* Обновляем стили для body */
+body {
+  font-family: Raleway, sans-serif;
+  background: url('https://d2pas86kykpvmq.cloudfront.net/landings/glossy/bg-hero.png') no-repeat center center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #1d162c;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+footer {
+  /* background-color: #1d162c; */
+  color: #fff;
+  text-align: right;
+  padding: 10px 0;
+  margin-top: auto; 
+  margin-right: 3%;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  background: #eee;
+  padding: 10px 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #886fbf;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  width: 200px;
+}
+
+
+
+/* @import url("https://fonts.googleapis.com/css2?family=Raleway&family=Montseratt&display=swap"); */
+
+/* body {
+  font-family: Raleway, sans-serif;
+  height: 100%;
+  /* display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #1d162c;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+footer {
+  background-color: #1d162c;
+  color: #fff;
+  text-align: right;
+  padding: 10px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: #eee;
+  padding: 10px 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  width: 200px;
+} */
+

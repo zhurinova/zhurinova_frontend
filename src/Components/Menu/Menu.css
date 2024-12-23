@@ -1,0 +1,55 @@
+/* Основной стиль для бокового меню */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Меню скрыто за пределами экрана по умолчанию */
+    height: 100%;
+    width: 250px;
+    background: linear-gradient(#1d162c, #96288922);
+    color: white;
+    transition: left 0.3s ease; /* Плавное движение меню */
+    padding-top: 60px;
+  }
+  
+  .side-menu.open {
+    left: 0; /* Когда меню открыто, оно появляется */
+  }
+  
+  .side-menu ul {
+    list-style-type: none;
+    padding: 20%;
+  }
+  
+  .side-menu li {
+    padding: 20%;
+  }
+  
+  .side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+  }
+  
+  .side-menu a:hover {
+    color: #9176dd;
+  }
+  
+  /* Кнопка для открытия/закрытия меню */
+  .menu-toggle {
+    font-size: 40px;
+    color: #ffffff;
+    background:none;
+    border: none;
+    padding: 10px 15px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1000; /* Убедитесь, что кнопка поверх контента */
+  }
+  
+  .menu-toggle:hover {
+    color: #9176dd;
+  }
+

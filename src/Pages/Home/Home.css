@@ -1,0 +1,38 @@
+
+  .home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: url('https://d2pas86kykpvmq.cloudfront.net/landings/glossy/bg-hero.png'); 
+    box-shadow: 0 20px 40px rgba(210, 99, 240, 0.601); /* Легкая тень */
+    width: 100%;
+    height: 80%;
+    /* padding: 20px; */
+  }
+  
+  .text-content {
+    flex: 1; /* Текст занимает доступное пространство */
+    padding: 20px;
+    text-align: right; /* Центровка текста */
+  }
+  
+  .text-content h2 {
+    margin: 0 0 10px;
+    font-size: 3rem;
+    text-align: right;
+    color: #ffffff; /* Темный текст */
+  }
+  
+  .text-content p {
+    font-size: 1.2rem;
+    color: #ffffff; /* Немного светлее */
+  }
+  
+  .image-content {
+    flex: 1; /* Картинка занимает оставшееся пространство */
+    background: url('https://d2pas86kykpvmq.cloudfront.net/landings/glossy/shape-10.png');
+    background-size: cover; /* Адаптация изображения */
+    height: 100vh; /* Фиксированная высота */
+    margin-left: 20px; /* Отступ от текста */
+  }
+  
