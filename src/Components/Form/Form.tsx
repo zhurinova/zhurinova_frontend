@@ -2,52 +2,45 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-const ExhibitForm = ({ initialData, onSubmit }) => {
-  const ExhibitSchema = Yup.object().shape({
-    title: Yup.string().required('Title is required'),
-    yearOfCreation: Yup.number().required('Year is required').positive().integer(),
-    price: Yup.number().required('Price is required').positive(),
-    technique: Yup.string().required('Technique is required'),
-    artistId: Yup.number().nullable(),
+const OrderForm = ({ initialData, onSubmit }) => {
+  const OrderSchema = Yup.object().shape({
+    price: Yup.number().required('Price is required').positive().integer(),
+    status: Yup.string().required('Status is required'),
+    dateTime: Yup.string().required('DateTime is required'),
+    customerId: Yup.number().nullable(),
   });
 
   return (
     <Formik
       initialValues={initialData || {
-        title: '',
-        yearOfCreation: '',
         price: '',
-        technique: '',
-        artistId: '',
+        status: '',
+        dateTime: '',
+        customerId: '',
       }}
-      validationSchema={ExhibitSchema}
+      validationSchema={OrderSchema}
       onSubmit={onSubmit}
     >
       {({ errors, touched }) => (
         <Form>
-          <div>
-            <label>Title</label>
-            <Field name="title" />
-            {errors.title && touched.title && <div>{String(errors.title)}</div>}
-          </div>
-          <div>
-            <label>Year of Creation</label>
-            <Field name="yearOfCreation" type="number" />
-            {errors.yearOfCreation && touched.yearOfCreation && <div>{String(errors.yearOfCreation)}</div>}
-          </div>
           <div>
             <label>Price</label>
             <Field name="price" type="number" />
             {errors.price && touched.price && <div>{String(errors.price)}</div>}
           </div>
           <div>
-            <label>Technique</label>
-            <Field name="technique" />
-            {errors.technique && touched.technique && <div>{String(errors.technique)}</div>}
+            <label>Status</label>
+            <Field name="status" />
+            {errors.status && touched.status && <div>{String(errors.status)}</div>}
           </div>
           <div>
-            <label>Artist ID (Optional)</label>
-            <Field name="artistId" type="number" />
+            <label>DatetTime</label>
+            <Field name="dateTime" />
+            {errors.dateTime && touched.dateTime && <div>{String(errors.dateTime)}</div>}
+          </div>
+          <div>
+            <label>Customer ID (Optional)</label>
+            <Field name="customerId" type="number" />
           </div>
           <button type="submit">Submit</button>
         </Form>
@@ -56,4 +49,4 @@ const ExhibitForm = ({ initialData, onSubmit }) => {
   );
 };
 
-export default ExhibitForm;
+export default OrderForm;

@@ -5,10 +5,10 @@ import Header from './Components/Header/Header.tsx';
 import Footer from './Components/Footer/Footer.tsx';
 import Menu from './Components/Menu/Menu.tsx';
 import Home from './Pages/Home/Home.tsx';
-import Exhibits from './Pages/Exhibits/Exhibits.tsx';
-import Login from './Pages/Login/Login.tsx';
+import Orders from './Pages/Orders/Orders.tsx';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute.tsx';
-import Artists from './Pages/Artists/Artists.tsx';
+import Customers from './Pages/Customer/Customer.tsx';
+import Login from './Pages/Login/Login.tsx';
 
 const App = () => (
   <Router>
@@ -17,20 +17,19 @@ const App = () => (
     <main>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Используем ProtectedRoute для защиты маршрута */}
-        <Route
-          path="/exhibits"
-          element={
-           <ProtectedRoute>
-              <Exhibits />
-            </ProtectedRoute>
-          }
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoute>
+                  <Orders />
+              </ProtectedRoute>
+            }
         />
-        <Route
-          path="/artists"
-          element={
+          <Route
+            path="/customers"
+            element={
            <ProtectedRoute>
-              <Artists />
+              <Customers />
             </ProtectedRoute>
           }
         />
@@ -42,37 +41,3 @@ const App = () => (
 );
 
 export default App;
-
-// const App = () => (
-//   <Router>
-//     <Header />
-//     <Menu />
-//     <main>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         {/* Используем ProtectedRoute для защиты маршрута */}
-//         <ProtectedRoute path="/exhibits" element={<Exhibits />} />
-//         <Route path="/login" element={<Login />} />
-//       </Routes>
-//     </main>
-//     <Footer />
-//   </Router>
-// );
-//export default App;
-
-// const App = () => (
-//   <Router>
-//     <Header />
-//     <Menu />
-//     <main>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/exhibits" element={<Exhibits />} />
-//         <Route path="/login" element={<Login />} />
-//       </Routes>
-//     </main>
-//     <Footer />
-//   </Router>
-// );
-
-// export default App;

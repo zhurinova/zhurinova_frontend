@@ -1,116 +1,14 @@
 import axios from 'axios';
 
-const API_URL = 'https://localhost:7203/api';
+const API_URL = 'https://localhost:7246/api';
 
-export interface QueryObjectExhibit {
-  search?: string;
+export interface QueryObjectOrder {
   minPrice?: number;
   maxPrice?: number;
   sortBy?: string;
   isDescending?: boolean;
-  sold?: boolean;
+  closed?: boolean;
 }
-
-export interface QueryObjectArtist {
-  schoolOfPainting?: string;
-  fullName?: string;
-  sortBy?: string;
-  isDescending?: boolean;
-}
-
-export const getExhibits = async (params: QueryObjectExhibit) => {
-  const response = await axios.get(`${API_URL}/exhibit`, { params });
-  return response.data;
-};
-
-export const deleteExhibit = async (exhibitId: number) => {
-  const token = localStorage.getItem('token'); // Получаем токен из localStorage
-  if (!token) {
-    throw new Error('Unauthorized: No token found');
-  }
-
-  try {
-    const response = await axios.delete(
-      `${API_URL}/exhibit/${exhibitId}`, // URL для удаления экспоната
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Передаем токен в заголовке
-        },
-      }
-    );
-    return response.data; // Возвращаем ответ от сервера (удаленный экспонат)
-  } catch (error) {
-    console.error('Error deleting exhibit', error);
-    throw error;
-  }
-};
-
-export const sellExhibit = async (exhibitId: number) => {
-  const token = localStorage.getItem('token'); // Получаем токен из localStorage
-  if (!token) {
-    throw new Error('Unauthorized: No token found');
-  }
-
-  const today = new Date().toISOString(); // Текущая дата в формате ISO
-
-  try {
-    const response = await axios.put(
-      `${API_URL}/exhibit/${exhibitId}/sell-exhibit`,
-      { dateOfSale: today },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Передаем токен в заголовке
-        },
-      }
-    );
-    return response.data; // возвращаем обновленные данные
-  } catch (error) {
-    console.error('Error selling exhibit', error);
-    throw error;
-  }
-};
-
-export const updateExhibitPrice = async (exhibitId: number, price: number) => {
-  const token = localStorage.getItem('token'); // Получаем токен из localStorage
-  if (!token) {
-    throw new Error('Unauthorized: No token found');
-  }
-
-  try {
-    const response = await axios.put(
-      `${API_URL}/exhibit/${exhibitId}`,
-      { price }, // Отправляем новую цену
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Передаем токен в заголовке
-        },
-      }
-    );
-    return response.data; // Возвращаем обновленные данные
-  } catch (error) {
-    console.error('Error updating price', error);
-    throw error;
-  }
-};
-
-export const getExhibitById = async (exhibitId: number) => {
-  const token = localStorage.getItem('token'); // Получаем токен из localStorage
-  if (!token) {
-    throw new Error('Unauthorized: No token found');
-  }
-
-  try {
-    const response = await axios.get(`${API_URL}/exhibit/${exhibitId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`, // Передаем токен в заголовке
-      },
-    });
-    return response.data; // Возвращаем данные экспоната
-  } catch (error) {
-    console.error('Error fetching exhibit by ID', error);
-    throw error;
-  }
-};
 
 export const login_post = async (login: string, password: string) => {
   try {
@@ -125,13 +23,33 @@ export const login_post = async (login: string, password: string) => {
   }
 };
 
-export const createExhibit = async (artistId: number, exhibitDto: { 
-  title: string; 
-  yearOfCreation: number; 
+export const getOrders = async (params: QueryObjectOrder) => {
+  const response = await axios.get(`${API_URL}/order`, { params });
+  return response.data;
+};
+
+export const getOrderById = async (orderId: number) => {
+  const token = localStorage.getItem('token'); // Получаем токен из localStorage
+  if (!token) {
+    throw new Error('Unauthorized: No token found');
+  }
+
+  try {
+    const response = await axios.get(`${API_URL}/order/${orderId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`, // Передаем токен в заголовке
+      },
+    });
+    return response.data; 
+  } catch (error) {
+    console.error('Error fetching order by ID', error);
+    throw error;
+  }
+};
+
+export const createOrder = async (customerId: number, orderDto: { 
   price: number; 
-  technique: string; 
-  dateOfSale: string; 
-  imageUrl: string;
+  status: string; 
 }) => {
   const token = localStorage.getItem('token'); 
   if (!token) {
@@ -139,47 +57,46 @@ export const createExhibit = async (artistId: number, exhibitDto: {
   }
 
   try {
-    const response = await axios.post(`${API_URL}/exhibit/${artistId}`, 
-      exhibitDto, 
+    const response = await axios.post(`${API_URL}/order/${customerId}`, 
+      orderDto, 
       {
         headers: {
           Authorization: `Bearer ${token}`, 
         },
       }
     );
-    return response.data; // Возвращаем данные созданного экспоната
+    return response.data; // Возвращаем данные созданного заказа
   } catch (error) {
-    console.error('Error creating exhibit', error);
+    console.error('Error creating order', error);
     throw error;
   }
 };
 
-export const getArtists = async (params: QueryObjectArtist) => {
-    const response = await axios.get(`${API_URL}/artist`, { params });
-    return response.data;
-  };
+export const updateOrder = async (orderId: number, price: number, status:string) => {
+  const token = localStorage.getItem('token'); 
+  if (!token) {
+    throw new Error('Unauthorized: No token found');
+  }
 
-  export const getArtistsWithAveragePrice = async () => {
-    const token = localStorage.getItem('token'); // Получаем токен из localStorage
-    if (!token) {
-      throw new Error('Unauthorized: No token found');
-    }
-  
-    try {
-      const response = await axios.get(`${API_URL}/artist/with-average-price`, {
+  try {
+    const response = await axios.put(
+      `${API_URL}/order/${orderId}`,
+      { price, status }, 
+      {
         headers: {
-          Authorization: `Bearer ${token}`, // Передаем токен в заголовке
+          Authorization: `Bearer ${token}`, 
         },
-      });
-      return response.data; // Возвращаем данные экспоната
-    } catch (error) {
-      console.error('Error GET', error);
-      throw error;
-    }
-  };
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error updating order', error);
+    throw error;
+  }
+};
 
 
-export const deleteArtist = async (artistId: number) => {
+export const deleteOrder = async (orderId: number) => {
   const token = localStorage.getItem('token'); // Получаем токен из localStorage
   if (!token) {
     throw new Error('Unauthorized: No token found');
@@ -187,104 +104,112 @@ export const deleteArtist = async (artistId: number) => {
 
   try {
     const response = await axios.delete(
-      `${API_URL}/artist/${artistId}`, // URL для удаления экспоната
+      `${API_URL}/order/${orderId}`, 
       {
         headers: {
           Authorization: `Bearer ${token}`, // Передаем токен в заголовке
         },
       }
     );
-    return response.data; // Возвращаем ответ от сервера (удаленный экспонат)
+    return response.data; 
   } catch (error) {
-    console.error('Error deleting artist', error);
+    console.error('Error deleting order', error);
     throw error;
   }
 };
 
-export const updateArtist = async (artistId: number, fullName: string, schoolOfPainting: string) => {
-  const token = localStorage.getItem('token'); // Получаем токен из localStorage
-  if (!token) {
-    throw new Error('Unauthorized: No token found');
-  }
-
-  try {
-    const response = await axios.put(
-      `${API_URL}/artist/${artistId}`,
-      { fullName, schoolOfPainting }, 
-      {
-        headers: {
-          Authorization: `Bearer ${token}`, // Передаем токен в заголовке
-        },
-      }
-    );
-    return response.data; // Возвращаем обновленные данные
-  } catch (error) {
-    console.error('Error updating artist', error);
-    throw error;
-  }
+export const getCustomers = async () => {
+  const response = await axios.get(`${API_URL}/customer`);
+  return response.data;
 };
 
-export const getArtistById = async (artistId: number) => {
-  const token = localStorage.getItem('token'); // Получаем токен из localStorage
-  if (!token) {
-    throw new Error('Unauthorized: No token found');
-  }
+export const updateCustomer = async (customerId: number, name: string, address: string, email:string, phone:string) => {
+    const token = localStorage.getItem('token'); // Получаем токен из localStorage
+    if (!token) {
+      throw new Error('Unauthorized: No token found');
+    }
+  
+    try {
+      const response = await axios.put(
+        `${API_URL}/customer/${customerId}`,
+        { name, address, email, phone }, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+        }
+      );
+      return response.data; 
+    } catch (error) {
+      console.error('Error updating customer', error);
+      throw error;
+    }
+  };
 
-  try {
-    const response = await axios.get(`${API_URL}/artist/${artistId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`, // Передаем токен в заголовке
-      },
-    });
-    return response.data; // Возвращаем данные экспоната
-  } catch (error) {
-    console.error('Error fetching artist by ID', error);
-    throw error;
-  }
-};
+  export const deleteCustomer = async (customerId: number) => {
+    const token = localStorage.getItem('token'); 
+    if (!token) {
+      throw new Error('Unauthorized: No token found');
+    }
+  
+    try {
+      const response = await axios.delete(
+        `${API_URL}/customer/${customerId}`, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+        }
+      );
+      return response.data; 
+    } catch (error) {
+      console.error('Error deleting customer', error);
+      throw error;
+    }
+  };
 
-export const createArtist = async (artistId: number, artistDto: { 
-  fullName: string; 
-  schoolOfPainting: string; 
-  dateOfBirth: string; 
-}) => {
-  const token = localStorage.getItem('token'); 
-  if (!token) {
-    throw new Error('Unauthorized: No token found');
-  }
-
-  try {
-    const response = await axios.post(`${API_URL}/artist`, 
-      artistDto, 
-      {
+  export const getCustomerById = async (customerId: number) => {
+    const token = localStorage.getItem('token'); 
+    if (!token) {
+      throw new Error('Unauthorized: No token found');
+    }
+  
+    try {
+      const response = await axios.get(`${API_URL}/customer/${customerId}`, {
         headers: {
           Authorization: `Bearer ${token}`, 
         },
-      }
-    );
-    return response.data; // Возвращаем данные созданного экспоната
-  } catch (error) {
-    console.error('Error creating artist', error);
-    throw error;
-  }
-};
-
-// export const getArtists = async (params) => {
-//   const response = await axios.get(`${API_URL}/artist`, { params });
-//   return response.data;
-// };
-
-// export const getArtists = async (params: { search?: string }) => {
-//   try {
-//     const query = params.search ? `?search=${params.search}` : ''; // Формируем запрос
-//     const response = await fetch(`/api/artists${query}`);
-//     const data = await response.json();
-//     return data; // Возвращаем данные
-//   } catch (error) {
-//     console.error('Error fetching artists:', error);
-//     return []; // Если ошибка, возвращаем пустой массив
-//   }
-// };
-
-
-// Другие методы работы с API
+      });
+      return response.data; 
+    } catch (error) {
+      console.error('Error fetching customer by ID', error);
+      throw error;
+    }
+  };
+  
+  export const createCustomer = async ( customerDto: { 
+    name: string; 
+    address: string; 
+    email: string; 
+    phone: string; 
+  }) => {
+    const token = localStorage.getItem('token'); 
+    if (!token) {
+      throw new Error('Unauthorized: No token found');
+    }
+  
+    try {
+      const response = await axios.post(`${API_URL}/customer`, 
+        customerDto, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error('Error creating customer', error);
+      throw error;
+    }
+  };

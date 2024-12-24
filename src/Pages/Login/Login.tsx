@@ -33,7 +33,7 @@ const Login = () => {
         {successMessage && <p className="success">{successMessage}</p>}
         <form onSubmit={handleLogin}>
           <div>
-            <label>Username:</label>
+            <label>Username</label>
             <input
               type="text"
               value={username}
@@ -41,7 +41,7 @@ const Login = () => {
             />
           </div>
           <div>
-            <label>Password:</label>
+            <label>Password</label>
             <input
               type="password"
               value={password}

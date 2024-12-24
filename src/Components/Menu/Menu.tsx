@@ -12,27 +12,23 @@ const Menu = () => {
 
   return (
     <div>
-      {/* Кнопка для открытия/закрытия меню */}
       <button className="menu-toggle" onClick={toggleMenu}>
         ☰
       </button>
-
-      {/* Боковое меню */}
       <nav className={`side-menu ${isOpen ? 'open' : ''}`}>
         <ul>
           <li>
             <Link to="/" onClick={toggleMenu}>Home</Link>
           </li>
           <li>
-            <Link to="/exhibits" onClick={toggleMenu}>Exhibits</Link>
+            <Link to="/customers" onClick={toggleMenu}>Customers</Link>
           </li>
           <li>
-            <Link to="/artists" onClick={toggleMenu}>Artists</Link>
+            <Link to="/orders" onClick={toggleMenu}>Orders</Link>
           </li>
           <li>
             <Link to="/login" onClick={toggleMenu}>Login</Link>
           </li>
-          {/* Кнопка Logout, которая будет отображаться в меню */}
           <li>
             <LogoutButton />
           </li>

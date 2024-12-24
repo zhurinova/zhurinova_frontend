@@ -5,11 +5,11 @@ import './Header.css'; // Импортируем стили для компон�
 const Header = () => (
   <header className="header-container">
     <div className="text-container">
-      <h1>Art Gallery</h1>
+      <h1>Flower Shop</h1>
     </div>
     <div className="image-container">
       <img 
-        src="https://svgsilh.com/svg_v2/2027123.svg" 
+        src="https://svgsilh.com/svg/304810.svg" 
         alt="Logo" 
         className="logo" 
       />

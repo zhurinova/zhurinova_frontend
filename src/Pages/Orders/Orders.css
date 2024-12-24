@@ -1,0 +1,51 @@
+.exhibits-container {
+  background: linear-gradient(135deg, #ee097d, #fa49a9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.top-section > * {
+  flex: 1;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.view-toggle-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.view-toggle-container button {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.view-toggle-container button.active {
+  background-color: #cb0a7e;
+  color: #fff;
+  border: none;
+}
+
+.view-toggle-container button:hover {
+  background-color: #fb97c7;
+  transform: scale(1.05);
+}

@@ -1,40 +1,51 @@
 import React, { useState } from 'react';
-import { getExhibits } from '../../Services/Api.tsx';
-import './Filters.css';
+import { getOrders } from '../../Services/Api.tsx';
+import './Filter.css';
 
-interface QueryObjectExhibit {
+interface QueryObjectOrder {
   minPrice?: number;
   maxPrice?: number;
-  sold?: boolean;
+  closed?: boolean;
 }
 
-const Filters = ({ setExhibits }: { setExhibits: React.Dispatch<React.SetStateAction<any[]>> }) => {
+const Filters = ({ setOrders }: { setOrders: React.Dispatch<React.SetStateAction<any[]>> }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(0);
-  const [sold, setSold] = useState<boolean>();
+  const [closed, setClosed] = useState<boolean | undefined>(undefined);  // Убедитесь, что initial state правильный
 
   const handleSearch = async () => {
-    const queryParams: QueryObjectExhibit = { minPrice, maxPrice, sold };
+    const queryParams: QueryObjectOrder = { minPrice, maxPrice, closed };
 
     try {
-      const data = await getExhibits(queryParams);
-      const filteredData = data.filter((exhibit: any) =>
-        exhibit.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setExhibits(filteredData);
+      // Получаем все заказы с фильтрами
+      const data = await getOrders(queryParams);
+
+      // Фильтруем данные по статусу
+      const filteredData = data.filter((order: any) => {
+        const matchesStatus = order.status.toLowerCase().includes(searchTerm.toLowerCase());
+        
+        // Применяем дополнительные фильтры по цене и состоянию заказа
+        const matchesPrice = (minPrice === 0 || order.price >= minPrice) && (maxPrice === 0 || order.price <= maxPrice);
+        const matchesClosed = closed === undefined || order.closed === closed;
+        
+        // Возвращаем заказ, если все условия выполнены
+        return matchesStatus && matchesPrice && matchesClosed;
+      });
+
+      setOrders(filteredData);
     } catch (error) {
-      console.error('Error fetching exhibits:', error);
+      console.error('Error fetching orders:', error);
     }
   };
 
   return (
     <div className="filters-container">
-      <h2>Sort Exhibit</h2>
+      <h2>Sort Orders</h2>
       <div className="filter-item">
         <input
           type="text"
-          placeholder="Search by title..."
+          placeholder="Search by status"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="filter-input"
@@ -65,18 +76,6 @@ const Filters = ({ setExhibits }: { setExhibits: React.Dispatch<React.SetStateAc
           />
         </div>
       </div>
-
-      <div className="filter-item">
-        <label className="filter-checkbox">
-          <input
-            type="checkbox"
-            checked={sold}
-            onChange={(e) => setSold(e.target.checked)}
-          />
-          Sold
-        </label>
-      </div>
-
       <button onClick={handleSearch} className="search-button">
         Search
       </button>

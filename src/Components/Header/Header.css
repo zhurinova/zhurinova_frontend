@@ -1,8 +1,8 @@
 /* Контейнер для всего header */
 .header-container {
     display: flex;
-    justify-content: space-between; /* Распределяет элементы по обеим сторонам */
-    align-items: center; /* Выравнивает элементы по вертикали */
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
     height: 100px;
     box-sizing: border-box;
@@ -10,17 +10,10 @@
   
   /* Контейнер для текста */
   .text-container {
-    flex-grow: 1; /* Занимает оставшееся пространство, чтобы текст был по центру */
+    flex-grow: 1;
     text-align: center;
   }
   
-  /* Контейнер для картинки */
-  .image-container {
-    position: relative;
-    text-align: center;
-  }
-  
-  /* Стили для картинки */
   .logo {
     width: 50px;
     height: 50px;

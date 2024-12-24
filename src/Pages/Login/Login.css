@@ -1,24 +1,22 @@
 body {
     margin: 0;
     padding: 0;
-    background: #1d162c;
   }
   
   .login-container {
     display: flex;
-    background: url('https://d2pas86kykpvmq.cloudfront.net/landings/glossy/shape-6.png') no-repeat center; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 80vh; /* Занимает всю высоту экрана */
+    min-height: 80vh; 
     text-align: center;
   }
   
   .login-form {
-    background: linear-gradient(#5f47fbdf, #edbaff00); /* Белый фон для формы */
+    background: linear-gradient(#ff36aedf, #555555c9);
     padding: 10px;
-    border-radius: 35px; /* Скругленные углы */
-    width: 300px; /* Фиксированная ширина */
+    border-radius: 35px; 
+    width: 300px; 
   }
   
   .login-form h2 {
@@ -28,7 +26,7 @@ body {
   
   .login-form div {
     margin-bottom: 15px;
-    text-align: left; /* Выравнивание текста для меток */
+    text-align: left; 
   }
   
   .login-form label {
@@ -47,7 +45,7 @@ body {
   }
   
   .login-form button {
-    background-color: #ff42f9;
+    background-color: #000000;
     color: white;
     padding: 10px;
     border: none;
@@ -58,7 +56,7 @@ body {
   }
   
   .login-form button:hover {
-    background-color: #af72ff; /* Темнее при наведении */
+    background-color: #af72ff; 
   }
   
   .login-form p {
@@ -73,4 +71,3 @@ body {
   .login-form p.success {
     color: rgb(119, 255, 119);
   }
-  

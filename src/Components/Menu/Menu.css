@@ -5,7 +5,7 @@
     left: -250px; /* Меню скрыто за пределами экрана по умолчанию */
     height: 100%;
     width: 250px;
-    background: linear-gradient(#1d162c, #96288922);
+    background: linear-gradient(#2c1627, #96288922);
     color: white;
     transition: left 0.3s ease; /* Плавное движение меню */
     padding-top: 60px;
@@ -32,7 +32,7 @@
   }
   
   .side-menu a:hover {
-    color: #9176dd;
+    color: #de1fb5;
   }
   
   /* Кнопка для открытия/закрытия меню */
@@ -50,6 +50,7 @@
   }
   
   .menu-toggle:hover {
-    color: #9176dd;
+    color: #f67dd7;
   }
 
+  

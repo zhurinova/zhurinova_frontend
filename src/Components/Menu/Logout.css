@@ -1,12 +1,11 @@
-/* LogoutButton.css */
 .logout-button {
     position: absolute;
     bottom: 10%;
     font-family: Raleway;
     font-weight: 600;
     padding: 10px 20px;
-    background-color: #6c5ce7; 
-    color: white;
+    background-color: #ff63d3; 
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -15,6 +14,6 @@
   }
   
   .logout-button:hover {
-    background-color: #483bab; /* Темно-оранжевый при наведении */
+    background-color: #b64177;
   }
   
